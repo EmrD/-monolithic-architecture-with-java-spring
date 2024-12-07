@@ -1,0 +1,30 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="send_req()">Make Example Request</button>
+</body>
+
+<script>
+    async function send_req() {
+        const url = "/exampleRequest";
+        try {
+            const response = await fetch(url , {method: "GET"});
+            if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+            }
+
+            const result = await response.text();
+            alert(result);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+</script>
+
+</html>
